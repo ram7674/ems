@@ -1,0 +1,46 @@
+.topbar {
+  position: fixed;
+  top: 0;
+  left: 240px; /* same as sidebar width */
+  right: 0;
+  height: 64px;
+  background: linear-gradient(90deg, #1f3c88, #3a68b8);
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  z-index: 99;
+}
+
+.brand {
+  font-size: 1.6rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.user {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: 1rem;
+  font-size: 1rem;
+  padding-left: 30px;
+}
+
+.logout-btn {
+  background-color: #ff4c60;
+  border: none;
+  color: white;
+  padding: 0.45rem 1rem;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.logout-btn:hover {
+  background-color: #e63946;
+}

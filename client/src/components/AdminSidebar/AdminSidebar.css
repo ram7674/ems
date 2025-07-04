@@ -1,0 +1,66 @@
+/* Sidebar Container */
+.sidebar {
+  width: 240px;
+  height: 100vh;
+  background: linear-gradient(180deg, #1f2b52, #1a1f38);
+  padding: 1.5rem 1rem;
+  color: #fff;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.08);
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow-y: auto;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Brand Section */
+.sidebar .brand {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 2rem;
+  text-align: center;
+  letter-spacing: 2px;
+}
+
+/* Navigation List */
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* List Items */
+.sidebar ul li {
+  margin-bottom: 1rem;
+}
+
+/* Links */
+.sidebar ul li a {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  color: #f1f1f1;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Hover Effect */
+.sidebar ul li a:hover {
+  background-color: #3c4b6b;
+  color: #ffffff;
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.05);
+}
+
+/* Active (optional - use with NavLink) */
+.sidebar ul li a.active {
+  background-color: #3b4d73;
+  color: #fff;
+  font-weight: 600;
+}

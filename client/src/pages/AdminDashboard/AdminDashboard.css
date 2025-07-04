@@ -1,0 +1,23 @@
+/* Layout Container */
+.admin-dashboard {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Main Section */
+.main-section {
+  margin-left: 260px; 
+  width: calc(100% - 240px);
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* Content Area */
+.dashboard-content {
+  flex: 1;
+  padding: 70px 0px 0px 12px;
+  overflow-y: auto;
+  background-color: #ffffff;
+}
