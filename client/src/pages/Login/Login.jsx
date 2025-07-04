@@ -1,19 +1,14 @@
 import { useState } from "react";
 import "./Login.css";
-import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../context/AuthContext.jsx";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
 
-  const {login} = useAuth()
-  const navigate = useNavigate();
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    
     try {
       const res = await fetch("http://localhost:3000/login", {
         method: "POST",
@@ -25,20 +20,15 @@ function Login() {
 
       const data = await res.json();
 
-      // console.log(data);
-
       if (data.status === "success") {
-        login({name: data.name, role: data.role});
-        
         localStorage.setItem("token", data.token);
         alert(`Welcome ${data.role}: ${data.name}`);
         setErrorMsg("");
 
         if (data.role === "admin") {
-          navigate("/admin-dashboard");
-          // window.location.href = "/admin-dashboard";
+          window.location.href = "/admin-dashboard";
         } else {
-          navigate("/employee-dashboard");
+          window.location.href = "/employee-dashboard";
         }
       } else {
         setErrorMsg("Invalid email or password");

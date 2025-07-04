@@ -2,7 +2,6 @@ import db from "../config/db.js"; // your MySQL connection (with mysql2/promise)
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
-
 const JWT_SECRET = process.env.JWT_SECRET;
 
 const login = async (req, res) => {
@@ -37,26 +36,16 @@ const login = async (req, res) => {
     );
 
     // 4. Return user details
-    // res.status(200).json({
-    //   status: "success",
-    //   token,
-    //   role: user.role,
-    //   name: user.name,
-    // });
-
-     res.status(200).json({
+    res.status(200).json({
       status: "success",
       token,
-      user: {id: user.id, name: user.name, role: user.role}
+      role: user.role,
+      name: user.name,
     });
   } catch (err) {
     console.error("Login error:", err);
     res.status(500).json({ status: "error", message: "Server error" });
   }
 };
-
-// export const verify = (req, res) =>{
-//   return res.status(200).json({success: true, user: req.user});
-// }
 
 export default login;
