@@ -1,60 +1,58 @@
-import React, { createContext, useState, useEffect, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import React, { createContext, useContext, useEffect, useState } from "react";
+import axios from "axios";
 
-export const UserContext = createContext();
+const userContext = createContext();
 
 const AuthContext = ({ children }) => {
   const [user, setUser] = useState(null);
-  const navigate = useNavigate();
+  const [loading, setLoading] = useState(true); // should default to true
 
   useEffect(() => {
     const verifyUser = async () => {
-      const token = localStorage.getItem("token");
-      if (!token) {
-        navigate("/login");
-        return;
-      }
-
       try {
-        const res = await axios.get("http://localhost:3000/verify", {
-          headers: {
-            Authorization: `Bearer ${token}`
+        const token = localStorage.getItem("token");
+        if (token) {
+          const res = await axios.get("http://localhost:3000/verify", {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
+
+          if (res.data.status === "success") {
+            setUser(res.data.user);
+          } else {
+            setUser(null);
           }
-        });
-        
-        if (res.data.status === "success") {
-          setUser(res.data.user); // You must return `user` in /verify
         } else {
           setUser(null);
         }
       } catch (err) {
-        console.error("Verification failed:", err);
-      setUser(null);
+        console.error("Token verification failed:", err);
+        setUser(null);
+      } finally {
+        setLoading(false);
       }
     };
 
-    verifyUser(); // ✅ call the function
-  }, [navigate]);
+    verifyUser();
+  }, []);
 
-  const login = (userData) => {
-    setUser(userData);
-    localStorage.setItem("user", JSON.stringify(userData));
+  const login = (user) => {
+    setUser(user);
   };
 
   const logout = () => {
     setUser(null);
     localStorage.removeItem("token");
-    localStorage.removeItem("user");
-    navigate("/login");
   };
 
   return (
-    <UserContext.Provider value={{ user, login, logout }}>
+    <userContext.Provider value={{ user, login, logout, loading }}>
       {children}
-    </UserContext.Provider>
+    </userContext.Provider>
   );
 };
 
-export const useAuth = () => useContext(UserContext);
+export const useAuth = () => useContext(userContext);
+
 export default AuthContext;

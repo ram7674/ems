@@ -1,6 +1,10 @@
 .admin-summary-container {
   padding: 20px;
-  height: 90%;
+  position: fixed;
+  right: 0px;
+  margin-top: 60px;
+  width: 84%;
+  height: 100%;
   font-family: 'Segoe UI', sans-serif;
 }
 
@@ -8,6 +12,23 @@ h2 {
   margin-bottom: 20px;
   color: #333;
 }
+
+.dashboard-topCard {
+  display: flex;
+  justify-content: left;
+  align-items: left;
+  width: 100%;
+}
+
+.leave-detailsCard{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* 
+
+
+F
 
 .summary-cards {
   display: flex;
@@ -49,7 +70,7 @@ h2 {
   color: #222;
 }
 
-/* Colors */
+
 .card-green {
   border-left: 5px solid #4caf50;
 }
@@ -76,4 +97,4 @@ h2 {
 
 .card-danger {
   border-left: 5px solid #d32f2f;
-}
+} */

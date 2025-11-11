@@ -1,0 +1,44 @@
+.summary-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+  min-width: 31%;
+  max-width: 300px;
+  height: 100px;
+  margin: 10px;
+  transition: transform 0.2s ease;
+}
+
+.summary-card:hover {
+  transform: translateY(-4px);
+}
+
+.icon-container {
+  font-size: 32px;
+  color: #4a4a4a;
+  margin-right: 1rem;
+}
+
+.text-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+}
+
+.summary-text {
+  font-size: 14px;
+  color: #555;
+  margin: 0;
+}
+
+.summary-number {
+  font-size: 22px;
+  font-weight: bold;
+  color: #1a1a1a;
+  margin: 0;
+}

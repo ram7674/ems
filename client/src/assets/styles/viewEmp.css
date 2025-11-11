@@ -1,0 +1,52 @@
+label {
+    color: black;
+}
+p {
+    color: black;
+}
+
+.emp-container {
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  width: 100vh;
+  height: 100vh;
+}
+
+.employee-table {
+  width: 70% !important;
+  position: absolute;
+  right: 120px;
+}
+
+.employee-table th,
+.employee-table td {
+  vertical-align: middle;
+  text-align: left;
+}
+
+/* Row Colors */
+.row-pink {
+  background-color: #ffe6f0;
+}
+.row-green {
+  background-color: #e6ffe6;
+}
+.row-yellow {
+  background-color: #ffffe6;
+}
+.row-blue {
+  background-color: #e6f2ff;
+}
+.row-purple {
+  background-color: #f3e6ff;
+}
+.row-orange {
+  background-color: #fff0e6;
+}
+
+/* Hover effect - slightly darken */
+.employee-table tr:hover {
+  filter: brightness(0.95);
+  transition: all 0.3s ease;
+}

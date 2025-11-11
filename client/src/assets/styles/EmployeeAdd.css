@@ -1,0 +1,13 @@
+.select-items {
+    width: 100%;
+    border: 1px solid #d6d6d6;
+    padding: 6px;
+    border-radius: 5px;
+}
+.emp-mainCard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding-top: 50px;
+}

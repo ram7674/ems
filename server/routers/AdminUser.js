@@ -1,3 +1,6 @@
+import db from "../config/db.js";
+import bcrypt from 'bcrypt';
+
 const AdminUser = async (req, res) => {
   try {
     const [existing] = await db.execute('SELECT * FROM users WHERE email = ?', ['admin@example.com']);
@@ -19,3 +22,5 @@ const AdminUser = async (req, res) => {
 };
 
 export default AdminUser;
+
+// if the admin crediantials is correct but its show not correct call this function "AdminUser()" to the server.js function.

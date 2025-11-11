@@ -5,6 +5,12 @@
   overflow: hidden;
 }
 
+.admin-main{
+  background-color: aqua;
+  width: 100%;
+  height: 400px;
+}
+
 /* Main Section */
 .main-section {
   margin-left: 260px; 

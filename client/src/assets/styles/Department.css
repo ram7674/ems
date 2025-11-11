@@ -1,0 +1,7 @@
+.department-container{
+  position: fixed;
+  right: 0;
+  top: 5rem;
+  width: 84%;
+  padding: 20px;
+}

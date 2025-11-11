@@ -1,3 +1,4 @@
+import SummaryCard from "../SummaryCard/SummaryCard";
 import "./AdminSummary.css";
 import { FaUsers, FaBuilding, FaMoneyBill, FaFileAlt, FaCheckCircle, FaClock, FaTimesCircle } from "react-icons/fa";
 
@@ -5,7 +6,19 @@ const AdminSummary = () => {
   return (
     <div className="admin-summary-container">
       <h2>Dashboard Overview</h2>
-      <div className="summary-cards">
+      <div className="dashboard-topCard">
+        <SummaryCard icon={<FaUsers />} text="total employees" number={24} />
+        <SummaryCard icon={<FaBuilding />} text="total department" number={5} />
+        <SummaryCard icon={<FaMoneyBill />} text="monthly pay" number={50000} />
+      </div>
+      <h2>Leave details</h2>
+      <div className="leave-detailsCard">
+        <SummaryCard icon={<FaCheckCircle />} text="Leave Approved" number={20} />
+        <SummaryCard icon={<FaFileAlt />} text="Leave Applied" number={9} />
+        <SummaryCard icon={<FaTimesCircle />} text="Leave Rejected" number={6} />
+        <SummaryCard icon={<FaClock />} text="Leave Pending" number={4} />
+      </div>
+      {/* <div className="summary-cards">
         <div className="card card-green">
           <FaUsers className="card-icon" />
           <div>
@@ -64,7 +77,7 @@ const AdminSummary = () => {
             <h3>1</h3>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
