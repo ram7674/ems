@@ -3,14 +3,14 @@ import "./Navbar.css";
 
 const Navbar = () => {
 
-  const {user} = useAuth();
+  const {user, logout} = useAuth();
 
 
   return (
     <div className="topbar">
       <div className="user">
         Welcome, {user.name}
-        <button className="logout-btn">Logout</button>
+        <button className="logout-btn" onClick={logout} >Logout</button>
       </div>
     </div>
   );
