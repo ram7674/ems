@@ -40,10 +40,10 @@ function App() {
             </PrivateRoute>
           }
         >
-          {/* below is admindashboard childerns */}
+          {/* below is admindashboard*/}
           <Route index element={<AdminSummary />} />
 
-          {/* department childrens */}
+          {/* department */}
           <Route path="departments" element={<Department />} />
           <Route path="departments/add-departments" element={<DepartmentAdd />} />
           <Route path="departments/:id" element={<EditDepartment />} />
