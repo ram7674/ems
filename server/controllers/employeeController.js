@@ -114,40 +114,6 @@ const getEmployees = async (req, res) => {
   }
 };
 
-// Get a specific employee by ID
-// const getEmployeeById = async (req, res) => {
-//   const { id } = req.params;
-
-//   try {
-//     const [employee] = await db.execute(
-//       `SELECT employees.*, users.name AS name, users.profile_image AS image,
-//               employees.dob AS dob, departments.department_name AS depart_name
-//          FROM employees
-//          JOIN users ON employees.userId = users.id
-//          JOIN departments ON employees.department = departments.id
-//          WHERE employees.id = ?`,
-//       [id]
-//     );
-
-//     if (employee.length === 0) {
-//       return res.status(404).json({
-//         success: false,
-//         message: "Employee not found",
-//       });
-//     }
-
-//     res.status(200).json({
-//       success: true,
-//       employee: employee[0],
-//     });
-//   } catch (error) {
-//     console.error("Error fetching employee:", error);
-//     res.status(500).json({
-//       success: false,
-//       error: "Internal Server Error",
-//     });
-//   }
-// };
 const getEmployeeById = async (req, res) => {
   const { id } = req.params;
 
@@ -185,6 +151,35 @@ const getEmployeeById = async (req, res) => {
       success: false,
       error: "Internal Server Error",
     });
+  }
+};
+
+const getEmployeeByUserId = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const [rows] = await db.execute(
+      `SELECT 
+        employees.*, 
+        users.name AS employee_name,
+        users.email,
+        users.role,
+        users.profile_image AS profile_img,
+        departments.department_name AS depart_name
+       FROM employees
+       JOIN users ON employees.userId = users.id
+       JOIN departments ON employees.department = departments.id
+       WHERE employees.userId = ?`,
+      [id]
+    );
+
+    if (rows.length === 0) {
+      return res.status(404).json({ success: false });
+    }
+
+    res.status(200).json({ success: true, employee: rows[0] });
+  } catch (error) {
+    res.status(500).json({ success: false });
   }
 };
 
@@ -319,4 +314,4 @@ const fetchEmployeesByDepId = async (req, res) => {
 
 
 // Export multer middleware and controller
-export { upload, addEmployee, getEmployees, getEmployeeById, updateEmployee, fetchEmployeesByDepId };
+export { upload, addEmployee, getEmployees, getEmployeeById, updateEmployee, fetchEmployeesByDepId, getEmployeeByUserId };

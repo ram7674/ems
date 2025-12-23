@@ -2,7 +2,6 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import AdminDashboard from "./pages/AdminDashboard/AdminDashboard.jsx";
 import Login from "./pages/Login/Login.jsx";
-import EmployeeDashboard from "./pages/EmployeeDashboard/EmployeeDashboard.jsx";
 import PrivateRoute from "./routes/PrivateRoute.jsx";
 import RolebaseRoute from "./routes/RolebaseRoute.jsx";
 import Unauthorized from "./pages/Unauthorized/Unauthorized.jsx";
@@ -22,6 +21,11 @@ import ViewEmployee from "./components/Employees/ViewEmployee.jsx";
 import AddSalary from "./components/Salary/Salary.jsx";
 import SalaryView from "./components/Salary/SalaryView.jsx";
 
+import EmployeeDashboard from "./pages/EmployeeDashboard/EmployeeDashboard.jsx";
+import EmployeeSummeryCard from "./components/EmployeeSummeryCard/EmployeeSummeryCard.jsx";
+import EmpProfile from "./components/EmpProfile/EmpProfile.jsx";
+import EmpLeave from "./components/EmpLeave/EmpLeave.jsx";
+
 function App() {
   return (
     <BrowserRouter>
@@ -30,6 +34,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/unauthorized" element={<Unauthorized />} />
 
+        {/* admin rolebase routes its access only admins */}
         <Route
           path="/admin-dashboard"
           element={
@@ -59,7 +64,24 @@ function App() {
           <Route path="leaves" element={<Leaves />} />
         </Route>
 
-        <Route path="/employee-dashboard" element={<EmployeeDashboard />} />
+        {/* employees rolebase routes its access employees & admins also */}
+        <Route 
+          path="/employee-dashboard" 
+          element={
+            <PrivateRoute>
+              <RolebaseRoute requiredRole = {[ "Employee" , "admin"]} >
+                <EmployeeDashboard />
+              </RolebaseRoute>
+            </PrivateRoute>
+          } 
+        >
+
+          <Route index element={<EmployeeSummeryCard />} />
+          <Route path="emp-profile/:id" element={<EmpProfile />} />
+          <Route path="emp-leave" element={<EmpLeave />} />
+
+        </Route>
+
       </Routes>
     </BrowserRouter>
   );
