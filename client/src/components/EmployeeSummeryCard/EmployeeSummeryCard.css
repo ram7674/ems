@@ -1,0 +1,42 @@
+.emp-main-card{
+    display: flex;
+    width: 85%;
+    height: 95%;
+    position: fixed;
+    right: 0;
+    bottom: 0px;
+    padding: 70px 0px 0px 50px;
+}
+
+
+.emp-summary-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+  max-width: 300px;
+  height: 100px;
+  margin: 10px;
+  transition: transform 0.2s ease;
+}
+
+.emp-summary-card:hover {
+  transform: translateY(-4px);
+}
+
+.emp-icon-container {
+  font-size: 32px;
+  color: #4a4a4a;
+  margin-right: 1rem;
+  display: flex;
+
+}
+
+.emp-summary-text {
+  font-size: 16px;
+  color: #555;
+  margin-left: 20px;
+}
